@@ -50,7 +50,7 @@
             async loadNextImage()
             {
                 try{
-                    axios.defaults.headers.common['x-api-key'] = "DEMO-API-KEY" 
+                    axios.defaults.headers.common['x-api-key'] = "512a5a56-01cc-45e9-85a2-f0a4d750ac04" 
 
                     let response = await axios.get('https://api.thecatapi.com/v1/images/search', { params: { limit:1, size:"full" } } ) 
                     this.image = response.data[0] 
