@@ -25,7 +25,15 @@
             <v-layout row wrap>
                 <v-flex xs12 >
                 <v-card flat tile class="d-flex">
-                    <v-img :src="image.url" contain>
+                    <v-img :src="image0.url" contain>
+                    </v-img>
+                  <v-img :src="image1.url" contain>
+                    </v-img>
+                  <v-img :src="image2.url" contain>
+                    </v-img>
+                  <v-img :src="image3.url" contain>
+                    </v-img>
+                  <v-img :src="image4.url" contain>
                     </v-img>
                 </v-card>
                 </v-flex>
@@ -41,7 +49,11 @@
         el: '#app',
         vuetify: new Vuetify(),
         data: {
-            image: { url: ""}
+            image0: { url: ""},
+            image1: { url: ""},
+            image2: { url: ""},
+            image3: { url: ""},
+            image4: { url: ""},
         },
         created(){
             this.loadNextImage();
@@ -52,11 +64,15 @@
                 try{
                     axios.defaults.headers.common['x-api-key'] = "512a5a56-01cc-45e9-85a2-f0a4d750ac04" 
 
-                    let response = await axios.get('https://api.thecatapi.com/v1/images/search', { params: { limit:1, size:"full" } } ) 
-                    this.image = response.data[0] 
+                    let response = await axios.get('https://api.thecatapi.com/v1/images/search', { params: { limit:5, size:"full" } } ) 
+                    this.image0 = response.data[0] 
+                    this.image1 = response.data[1] 
+                    this.image2 = response.data[2] 
+                    this.image3 = response.data[3] 
+                    this.image4 = response.data[4] 
                     console.log("-- Image from TheCatAPI.com")
-                    console.log("id:", this.image.id)
-                    console.log("url:", this.image.url)
+                    console.log("id:", this.image0.id)
+                    console.log("url:", this.image0.url)
 
                 }catch(err){
                     console.log(err)
